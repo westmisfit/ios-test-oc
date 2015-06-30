@@ -1,17 +1,20 @@
 #!/bin/bash -e
 
+BUILD_DIR="./build"
+ORIGIN_OUTPUT_DIR=".."  # relative from BUILD_DIR
+
 echo "create build dir..."
-mkdir -p ./build
-cd ./build
+mkdir -p $BUILD_DIR
+cd $BUILD_DIR
 
 echo "clean..."
 rm -rf *
 
 echo "copy ipa file..."
-cp ../*.ipa ./
+cp $ORIGIN_OUTPUT_DIR/*.ipa ./
 
 echo "copy plist file..."
-cp ../*.dSYM.zip ./
+cp $ORIGIN_OUTPUT_DIR/*.dSYM.zip ./
 unzip *.dSYM.zip 
 cp *.dSYM/Contents/*.plist .
 rm -rf *.dSYM
