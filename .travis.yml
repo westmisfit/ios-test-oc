@@ -1,6 +1,8 @@
-language: objective-c
+sudo: true                 # explicitly enable sudo 
+language: objective-c      # choose your language, here is a sample for oc project
+osx_image: beta-xcode6.3   # choose your xcode version
 
-script:
+before_install:
   - which pip || true
   - which easy_install || true
   - which brew || true
@@ -9,3 +11,6 @@ script:
   - which pod || true
   - which mvn || true
   - which gem || true
+  - which rvm || true
+  - which bundle || true
+  - which xcodebuild || true
