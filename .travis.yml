@@ -35,7 +35,7 @@ before_install:
 
   - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
   - git clone --depth=50 https://github.com/facebook/infer.git $INFER_HOME
-  - find $INFER_HOME -name infer
+  # - find $INFER_HOME -name infer
 
 script:
-  - echo "lint..."; infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
+  - infer -- xcodebuild -target testapp-c -configuration Debug -sdk "iphonesimulator8.3"
