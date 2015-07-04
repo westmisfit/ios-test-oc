@@ -16,26 +16,11 @@ env:
     - PATH="$PATH:$INFER_HOME/infer/bin"
 
 before_install:
-  - openssl aes-256-cbc -k "$super_secret_password" -in README.md.enc -out test_README.md -d
-  - echo super_secret_password=$super_secret_password
-  - cat README.md
-  - cat test_README.md
-
-  - which pip || true
-  - which easy_install || true
-  - which brew || true
-  - which python || true
-  - which ruby || true
-  - which pod || true
-  - which mvn || true
-  - which gem || true
-  - which rvm || true
-  - which bundle || true
-  - which xcodebuild || true
-
+  - bash -ef ./scripts/test_encrypted_file.sh
+  - bash -ef ./scripts/list_installed_packages.sh 
+  - bash -ef ./scripts/install_pip.sh
   - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
-  - git clone --depth=50 https://github.com/facebook/infer.git $INFER_HOME
-  # - find $INFER_HOME -name infer
+  - bash -ef ./scripts/install_infer.sh
 
 script:
-  - infer -- xcodebuild -target testapp-c -configuration Debug -sdk "iphonesimulator8.3"
+  - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
