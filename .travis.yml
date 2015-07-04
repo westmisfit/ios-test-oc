@@ -13,7 +13,7 @@ env:
     - TRAVIS_EXT_OPTIONS="x"   # set 'x' to print all shell scripts
     # infer
     - INFER_HOME="$HOME/infer"
-    - PATH="$PATH:$INFER_HOME/infer/infer/bin"
+    - PATH="$PATH:$INFER_HOME/infer/bin"
 
 before_install:
   - openssl aes-256-cbc -k "$super_secret_password" -in README.md.enc -out test_README.md -d
@@ -34,7 +34,8 @@ before_install:
   - which xcodebuild || true
 
   - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
-  - git clone --depth=50 https://github.com/facebook/infer.git $INFER_HOME; find $INFER_HOME -name infer
+  - git clone --depth=50 https://github.com/facebook/infer.git $INFER_HOME
+  - find $INFER_HOME -name infer
 
 script:
   - echo "lint..."; infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
