@@ -8,3 +8,4 @@ script:
   - which ruby || true
   - which pod || true
   - which mvn || true
+  - which gem || true
