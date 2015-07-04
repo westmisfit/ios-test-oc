@@ -16,11 +16,11 @@ env:
     - PATH="$PATH:$INFER_HOME/infer/bin"
 
 before_install:
-  - bash -ef ./scripts/test_encrypted_file.sh
-  - bash -ef ./scripts/list_installed_packages.sh 
-  - bash -ef ./scripts/install_pip.sh
+  - bash ./scripts/test_encrypted_file.sh
+  - bash ./scripts/list_installed_packages.sh 
+  - bash ./scripts/install_pip.sh
   - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
-  - bash -ef ./scripts/install_infer.sh
+  - bash ./scripts/install_infer.sh
 
 script:
   - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator

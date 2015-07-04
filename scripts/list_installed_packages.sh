@@ -1,12 +1,13 @@
-which pip || true
-which easy_install || true
-which brew || true
-which python || true
-which ruby || true
-which pod || true
-which mvn || true
-which gem || true
-which rvm || true
-which bundle || true
-which xcodebuild || true
-which setuptools || true
+set -x
+which pip
+which easy_install
+which brew
+which python
+which ruby
+which pod
+which mvn
+which gem
+which rvm
+which bundle
+which xcodebuild
+which setuptools
