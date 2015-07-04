@@ -25,3 +25,6 @@ before_install:
   - which rvm || true
   - which bundle || true
   - which xcodebuild || true
+
+script:
+  - echo "lint..."; infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
