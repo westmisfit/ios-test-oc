@@ -3,8 +3,8 @@ language: objective-c      # choose your language, here is a sample for oc proje
 osx_image: beta-xcode6.3   # choose your xcode version
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_542e2a05727f_key -iv $encrypted_542e2a05727f_iv
-    -in README.md.enc -out test_README.md -d
+  - openssl aes-256-cbc -K $encrypted_542e2a05727f_key -iv $encrypted_542e2a05727f_iv -in README.md.enc -out test_README.md -d
+  - env | grep encrypted
   - cat README.md
   - cat test_README.md
 
