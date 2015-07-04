@@ -11,3 +11,4 @@ which rvm
 which bundle
 which xcodebuild
 which setuptools
+true
