@@ -1,0 +1,10 @@
+language: objective-c
+
+script:
+  - which pip || true
+  - which easy_install || true
+  - which brew || true
+  - which python || true
+  - which ruby || true
+  - which pod || true
+  - which mvn || true
