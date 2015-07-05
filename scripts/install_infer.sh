@@ -10,9 +10,11 @@ if [[ ! -f $INFER_HOME/infer/bin/infer ]]; then
     git checkout v0.2.0
     git branch
     ls -al
+    ls -al bin/
     ./update-fcp.sh
     ls -al $INFER_HOME
 fi
 
 # find $INFER_HOME/infer -name infer
+echo $PATH
 which infer
