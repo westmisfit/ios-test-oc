@@ -9,10 +9,8 @@ if [[ ! -f $INFER_HOME/infer/bin/infer ]]; then
     cd $INFER_HOME/infer
     git checkout v0.2.0
     git branch
-    cd infer
     ls -al
     ./update-fcp.sh
-
     ls -al $INFER_HOME
 fi
 
