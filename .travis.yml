@@ -13,7 +13,7 @@ env:
     - TRAVIS_EXT_OPTIONS="x"   # set 'x' to print all shell scripts
     # infer
     - INFER_HOME="$HOME/infer"
-    - PATH="$PATH:$INFER_HOME/infer/bin"
+    - PATH="$PATH:$INFER_HOME/infer-0.2.0/infer/bin"
 
 before_install:
   - bash ./scripts/test_encrypted_file.sh
