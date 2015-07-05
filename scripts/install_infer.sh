@@ -5,7 +5,7 @@ function install_macos(){
     # so, I have uploaded a copy of infer-osx-v0.1.0.tar.xz to dropbox,
     # then, download it from dropbox
     curl -L -o $HOME/infer-osx-v0.1.0.tar.xz https://www.dropbox.com/s/aw52i89zsa8218c/infer-osx-v0.1.0.tar.xz?dl=1
-    tar -xJf $HOME/infer-osx-v0.1.0.tar.xz $HOME
+    tar -xJf $HOME/infer-osx-v0.1.0.tar.xz -C $HOME
     ln -s $HOME/infer-osx-v0.1.0 $HOME/infer
 }
 
