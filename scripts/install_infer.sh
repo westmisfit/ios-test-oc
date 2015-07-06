@@ -4,7 +4,7 @@ function install_macos(){
     # because fbinfer removed the osx download link from https://github.com/facebook/infer/releases
     # so, I have uploaded a copy of infer-osx-v0.1.0.tar.xz to dropbox,
     # then, download it from dropbox
-    curl -L -o $HOME/infer-osx-v0.1.0.tar.xz https://www.dropbox.com/s/aw52i89zsa8218c/infer-osx-v0.1.0.tar.xz?dl=1
+    curl -L -o $HOME/infer-osx-v0.1.0.tar.xz https://s3.amazonaws.com/misfit.sw.stg.epd-team/downloads/infer-osx-v0.1.0.tar.xz
     tar -xJf $HOME/infer-osx-v0.1.0.tar.xz -C $HOME
     ln -s $HOME/infer-osx-v0.1.0 $HOME/infer
 }
