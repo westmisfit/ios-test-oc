@@ -5,4 +5,3 @@ Infer can analyze apps built using xcodebuild. Only .m and .c files will be anal
 ```
 infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
 ```
-
