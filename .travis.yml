@@ -2,12 +2,12 @@ sudo: false                # explicitly enable sudo
 language: objective-c      # choose your language, here is a sample for oc project
 osx_image: beta-xcode6.3   # choose your xcode version
 
-addons:
-  apt:
-    packages:
-      - python-pip
-      - python-dev
-      - python-virtualenv
+# addons:
+#   apt:  # not supported by osx workers
+#     packages:
+#       - python-pip
+#       - python-dev
+#       - python-virtualenv
 
 env:
   global:
@@ -24,7 +24,7 @@ env:
 before_install:
   - ./scripts/test_encrypted_file.sh
   - ./scripts/list_installed_packages.sh 
-  # - ./scripts/install_pip.sh
+  - ./scripts/install_pip.sh
   - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
   - ./scripts/install_infer.sh
 
