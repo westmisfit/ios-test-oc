@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -ex
 
 function install_macos(){

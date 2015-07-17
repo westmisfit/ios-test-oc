@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -x
 pip --version
 easy_install --version
