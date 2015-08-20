@@ -1,6 +1,8 @@
 sudo: false                # explicitly enable sudo 
 language: objective-c      # choose your language, here is a sample for oc project
-osx_image: beta-xcode6.3   # choose your xcode version
+osx_image:
+  - xcode6.4
+  - beta-xcode6.3
 
 # addons:
 #   apt:  # not supported by osx workers
@@ -27,15 +29,16 @@ before_install:
   # - ./scripts/install_pip.sh
   # - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
   # - ./scripts/install_infer.sh
+  - gem --version
+  - xctool --version
+  - xcodebuild -version
+  - xcrun simctl list
 
 install:
   # - "bundle install --jobs=3 --retry=3 --deployment --path=vendor/bundle"
   - gem install fastlane xcpretty
   - fastlane --version
   - xcpretty --version
-  - gem --version
-  - xctool --version
-  - xcodebuild -version
 
 script:
   # - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
