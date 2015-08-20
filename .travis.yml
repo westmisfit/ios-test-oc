@@ -27,15 +27,18 @@ before_install:
   # - ./scripts/install_pip.sh
   # - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
   # - ./scripts/install_infer.sh
+
+install:
   - bundle install
 
 script:
   # - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
   # - fastlane staging
-  - true
+  - ls -al vendor/bundle
 
 after_success:
   # - coveralls
-  - true
 
-cache: bundler
+cache:
+  directories:
+    - vendor/bundle
