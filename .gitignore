@@ -1,5 +1,7 @@
+.bundle
 build
 infer-out
 *.dSYM.zip
 *.ipa
 report.xml
+vendor
