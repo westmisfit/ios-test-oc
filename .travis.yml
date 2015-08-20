@@ -1,8 +1,5 @@
-sudo: false                # explicitly enable sudo 
-language: objective-c      # choose your language, here is a sample for oc project
-osx_image:
-  - xcode6.4
-  - beta-xcode6.3
+language: objective-c
+osx_image: xcode6.4
 
 # addons:
 #   apt:  # not supported by osx workers
