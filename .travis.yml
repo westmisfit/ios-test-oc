@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: beta-xcode6.3
+osx_image: xcode6.4
 
 # addons:
 #   apt:  # not supported by osx workers
@@ -27,7 +27,7 @@ before_install:
   # - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
   # - ./scripts/install_infer.sh
   - gem --version
-  - xctool --version
+  - xctool --version || true
   - xcodebuild -version
   - xcrun simctl list
 
