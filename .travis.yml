@@ -31,9 +31,11 @@ before_install:
 
 script:
   # - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
-  - fastlane staging
+  # - fastlane staging
+  - true
 
 after_success:
-  - coveralls
+  # - coveralls
+  - true
 
 cache: bundler
