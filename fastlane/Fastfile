@@ -57,7 +57,7 @@ platform :ios do
     xctool :test, [
       "-workspace", "testapp-c.xcworkspace",
       "-scheme", "testapp-c",
-      "-sdk", "iphonesimulator8.3",
+      "-sdk", "iphonesimulator8.4",
       "GCC_GENERATE_TEST_COVERAGE_FILES=YES",
       "GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES",
       "-IDECustomDerivedDataLocation='out/build_ccov'"
