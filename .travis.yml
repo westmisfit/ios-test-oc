@@ -23,9 +23,9 @@ env:
 
 install:
   - sudo easy_install cpp-coveralls
-  - brew uninstall xctool
-  - brew update
-  - brew install xctool --HEAD
+  # - brew uninstall xctool
+  # - brew update
+  # - brew install xctool --HEAD
   - sudo gem install fastlane xcpretty
 
 script:
