@@ -54,25 +54,26 @@ platform :ios do
     # see https://github.com/facebook/xctool/issues/16
 
     # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#xctool
-    xctool :test, [
-      "-project", "testapp-c.xcodeproj",
-      "-scheme", "testapp-c",
-      "-sdk", "iphonesimulator",
-      "GCC_GENERATE_TEST_COVERAGE_FILES=YES",
-      "GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES",
-      "-IDECustomDerivedDataLocation='out/build_ccov'"
-    ].join(" ")
+    # xctool :test, [
+    #   # "-project", "testapp-c.xcodeproj",
+    #   "-scheme", "testapp-c",
+    #   "-configuration", "Debug",
+    #   "-sdk", "iphonesimulator",
+    #   "GCC_GENERATE_TEST_COVERAGE_FILES=YES",
+    #   "GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES",
+    #   "-IDECustomDerivedDataLocation='out/build_ccov'"
+    # ].join(" ")
 
     # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#xctest
-    # xctest(
-    #   scheme: "testapp-c",
-    #   destination: "platform=iOS Simulator,name=iPhone 6",
-    #   build_settings: Hash[
-    #     "GCC_GENERATE_TEST_COVERAGE_FILES" => "YES",
-    #     "GCC_INSTRUMENT_PROGRAM_FLOW_ARCS" => "YES",
-    #     "-IDECustomDerivedDataLocation" => "out/build_ccov"
-    #   ]
-    # )
+    xctest(
+      scheme: "testapp-c",
+      destination: "platform=iOS Simulator,name=iPhone 6",
+      build_settings: Hash[
+        "GCC_GENERATE_TEST_COVERAGE_FILES" => "YES",
+        "GCC_INSTRUMENT_PROGRAM_FLOW_ARCS" => "YES",
+        "-IDECustomDerivedDataLocation" => "out/build_ccov"
+      ]
+    )
   end
 
   desc "Generate coverage report"

@@ -1,5 +1,6 @@
 .bundle
 build
+out
 infer-out
 *.dSYM.zip
 *.ipa
