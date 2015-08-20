@@ -22,15 +22,16 @@ env:
     - PATH="$PATH:$HOME/infer/infer/infer/bin"
 
 before_install:
-  - ./scripts/test_encrypted_file.sh
-  - ./scripts/list_installed_packages.sh 
-  - ./scripts/install_pip.sh
-  - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
-  - ./scripts/install_infer.sh
+  # - ./scripts/test_encrypted_file.sh
+  # - ./scripts/list_installed_packages.sh 
+  # - ./scripts/install_pip.sh
+  # - git clone --depth=50 --branch=develop https://github.com/westmisfit/travis-ext.git $TRAVIS_EXT_HOME
+  # - ./scripts/install_infer.sh
+  - sudo gem install fastlane
 
 script:
   # - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
-  - infer -- fastlane staging
+  - fastlane staging
 
 after_success:
   - coveralls
