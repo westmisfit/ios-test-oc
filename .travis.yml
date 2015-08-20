@@ -29,7 +29,7 @@ before_install:
   # - ./scripts/install_infer.sh
 
 install:
-  - bundle install
+  - bundle install --jobs=3 --retry=3 --deployment --path=vendor/bundle
 
 script:
   # - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
