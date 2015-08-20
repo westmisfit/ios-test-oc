@@ -1,7 +1,0 @@
-[
-  "-project", "testapp-c.xcodeproj",
-  "-scheme", "ci",
-  "-configuration", "Debug",
-  "-sdk", "iphonesimulator",
-  "-arch", "i386"
-]
