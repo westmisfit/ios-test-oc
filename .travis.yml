@@ -1,10 +1,36 @@
 language: objective-c
-before_install:
+
+# addons:
+#   apt:  # not supported by osx workers
+#     packages:
+#       - python-pip
+#       - python-dev
+#       - python-virtualenv
+
+env:
+  global:
+    # travis encrypt super_secret_password=Io5jboEHGfXc2byuvhOn
+    # openssl aes-256-cbc -k "Io5jboEHGfXc2byuvhOn" -in README.md -out README.md.enc
+    - secure: H1cRtWKyzGtJEYNUUsxxTB5x/A0Sy7qw5vVh2KWv83eYL5zrsxAvJ52Tmh98xR5U4nc91ZZAtyj5xg9zo/3+FFUTXWma9YApR0c47pNrI5nqshxFqUiwAwFnhJ7FeHW0aEEoDtI7OPE9CIheKzHPk36vl/QBqa1+gJ9fe8Uc8Bw6MjwYnbWPjUmFoyJEALGLoxRRF+Pd4jjF3UEakGCRJipOR92rgDvTfmWaep0nTImtmDQUnaa0ogkJx48EqHCnITT2xGTpWTBfDqN46z8R/zNktUzlNOjRxSzHE5OFlx4KqhL2/CRODXdbmz8jBft+fH9Y/b/6TPJAfZybS2oHaO+34ZmK1QnkTa3JEG3dnpk3tPQSFp6TCCw4wMy5rUbKLnZJAtLvzM8uIwRGVAPOKgob9ArfS3jiDRpqPPG4T3KhBvbvogCJe2RSlr7Hd7xu3F/N8iQZZUOoGymcOoiy5BmGPg6Fblqg3Vn+K2GdvOXCYzC6BrcB63z3TWb1O1SMMVXyoedb9N0OJpNcV+rLkfBm1uw13PVOU9zKgD6DsdUmEBzcKl5Z19qY5HA/Jbc6daYdB1fGmcssitFsQ0y10k7rIqhQ0D54bcpzrPKHIP8DfJCG4ZEEdTWYqYEAlaAmtidfSfix9SGayGIlZE3MhBbVnp4tDHs8t55di2boxLQ=
+    # travis-ext
+    - TRAVIS_EXT_HOME=$HOME/travis-ext
+    - TRAVIS_EXT=$TRAVIS_EXT_HOME/travis-ext.sh
+    - TRAVIS_EXT_VERBOSE=true
+    # infer
+    - PATH="$PATH:$HOME/infer/infer/infer/bin"
+
+# before_install:
+
+install:
   - sudo easy_install cpp-coveralls
-  # - brew uninstall xctool
-  # - brew update
-  # - brew install xctool --HEAD  
+  - brew uninstall xctool
+  - brew update
+  - brew install xctool --HEAD
+  - sudo gem install fastlane xcpretty
+
 script:
-  - xctool test ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  # - xctool test ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  - fastlane staging
+
 after_success:
   - ./script/coveralls.sh
