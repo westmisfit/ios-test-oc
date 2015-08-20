@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 trim()
 {
@@ -27,7 +27,7 @@ generateGcov()
 	cd "${gcov_dir}"
 	for file in ${gcov_dir}/*.gcda
 	do
-		gcov "${file}" -o "${gcov_dir}"
+		gcov-4.2 "${file}" -o "${gcov_dir}"
 	done
 	cd -
 }
@@ -50,7 +50,7 @@ main()
 # post
 	coveralls ${@+"$@"}
 # clean up
-	# removeGcov	
+	removeGcov	
 }
 
 main ${@+"$@"}
