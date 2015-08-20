@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2D02E2A0-A480-4815-9A68-CE5076587529</string>
+	<key>IDESourceControlProjectName</key>
+	<string>testapp-c</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5F5A8736A5F0B5C755464E13D808B66DE6016A5B</key>
+		<string>github.com:westmisfit/ios-test-oc.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>testapp-c.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5F5A8736A5F0B5C755464E13D808B66DE6016A5B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:westmisfit/ios-test-oc.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5F5A8736A5F0B5C755464E13D808B66DE6016A5B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5F5A8736A5F0B5C755464E13D808B66DE6016A5B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-test-oc</string>
+		</dict>
+	</array>
+</dict>
+</plist>

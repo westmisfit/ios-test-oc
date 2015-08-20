@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 misfit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "Hello.h"
 
 @interface testapp_cTests : XCTestCase
 
@@ -28,6 +29,8 @@
 - (void)testExample {
     // This is an example of a functional test case.
     XCTAssert(YES, @"Pass");
+    Hello *hello = [[Hello alloc] init];
+    Hello *new_hello = [hello return_hello];
 }
 
 - (void)testPerformanceExample {
