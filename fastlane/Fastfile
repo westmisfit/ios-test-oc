@@ -55,7 +55,7 @@ platform :ios do
 
     # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#xctool
     # xctool :test, [
-    #   # "-project", "testapp-c.xcodeproj",
+    #   "-workspace", "testapp-c.xcworkspace",
     #   "-scheme", "testapp-c",
     #   "-configuration", "Debug",
     #   "-sdk", "iphonesimulator",

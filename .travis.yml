@@ -31,6 +31,11 @@ before_install:
 install:
   # - "bundle install --jobs=3 --retry=3 --deployment --path=vendor/bundle"
   - gem install fastlane xcpretty
+  - fastlane --version
+  - xcpretty --version
+  - gem --version
+  - xctool --version
+  - xcodebuild -version
 
 script:
   # - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
