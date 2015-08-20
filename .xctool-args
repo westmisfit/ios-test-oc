@@ -1,5 +1,5 @@
 [
-  "-project", "Coveralls-iOS.xcodeproj",
+  "-project", "testapp-c.xcodeproj",
   "-scheme", "ci",
   "-configuration", "Debug",
   "-sdk", "iphonesimulator",
