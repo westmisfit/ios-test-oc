@@ -29,4 +29,8 @@ before_install:
   - ./scripts/install_infer.sh
 
 script:
-  - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
+  # - infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
+  - infer -- fastlane staging
+
+after_success:
+  - coveralls

@@ -35,32 +35,65 @@ platform :ios do
     # xctool # run the tests of your app
   end
 
+  desc "Build staging app"
+  lane :staging do
+    # cocoapods
+    clear
+    unittest
+    coverage
+  end
+
+  desc "Clear output"
+  lane :clear do
+    system("echo clear...; rm -rf ../out/")
+  end
+
   desc "Runs all the tests"
-  lane :test do
-    # snapshot
+  lane :unittest do
+    # xctool can't find implicit dependencies
+    # see https://github.com/facebook/xctool/issues/16
+
+    # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#xctool
+    xctool :test, [
+      "-scheme", "testapp-c",
+      "-sdk", "iphonesimulator",
+      "GCC_GENERATE_TEST_COVERAGE_FILES=YES",
+      "GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES",
+      "-IDECustomDerivedDataLocation='out/build_ccov'"
+    ].join(" ")
+
+    # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#xctest
+    # xctest(
+    #   scheme: "testapp-c",
+    #   destination: "platform=iOS Simulator,name=iPhone 6",
+    #   build_settings: Hash[
+    #     "GCC_GENERATE_TEST_COVERAGE_FILES" => "YES",
+    #     "GCC_INSTRUMENT_PROGRAM_FLOW_ARCS" => "YES",
+    #     "-IDECustomDerivedDataLocation" => "out/build_ccov"
+    #   ]
+    # )
   end
 
-  desc "Submit a new Beta Build to Apple TestFlight"
-  desc "This will also make sure the profile is up to date"
-  lane :beta do
-    # snapshot
-    sigh(development: true, cert_id: "7HWK2WV3CQ")
-    # deliver(beta: true)
+  desc "Generate coverage report"
+  lane :coverage do
+    # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#gcovr
+    # gcovr(
+    #   html: true,
+    #   html_details: true,
+    #   output: "./out/coverage/report.html",
+    #   root: "."
+    # )
 
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+    # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#gcovr
+    gcovr(
+      xml: true,
+      output: "./out/coverage/report.xml",
+      root: ".",
+      keep: true,
+      gcov_exclude: ".*#(?:PrometheusTests|Frameworks)#.*"
+    )
   end
 
-  desc "Deploy a new version to the App Store"
-  desc "** Full Markdown** Support: `code`"
-  lane :deploy do
-    # snapshot
-    sigh
-    # deliver(skip_deploy: true, force: true)
-    # frameit
-  end
-
-  # You can define as many lanes as you want
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful
