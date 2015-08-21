@@ -1,7 +1,5 @@
-# How to use infer with iOS project (objective-c)
+# ios-test-oc
 
-Infer can analyze apps built using xcodebuild. Only .m and .c files will be analyzed; .cpp, .cc and .mm files will be ignored.
+[![Build Status](https://travis-ci.org/westmisfit/ios-test-oc.svg)](https://travis-ci.org/westmisfit/ios-test-oc) [![Coverage Status](https://coveralls.io/repos/westmisfit/ios-test-oc/badge.svg?branch=develop&service=github)](https://coveralls.io/github/westmisfit/ios-test-oc?branch=develop)
 
-```
-infer -- xcodebuild -target testapp-c -configuration Debug -sdk iphonesimulator
-```
+This is an test project for object-c language.
