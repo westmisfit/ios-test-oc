@@ -35,5 +35,5 @@ script:
   # - true
 
 after_success:
-  - coveralls
+  - ./script/coveralls.sh
   # - true

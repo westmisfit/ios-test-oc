@@ -54,6 +54,7 @@ main()
     copyGcovToProjectDir
 # post
     coveralls ${@+"$@"}
+    echo '==>' ${@+"$@"}
 # clean up
     removeGcov  
 }
