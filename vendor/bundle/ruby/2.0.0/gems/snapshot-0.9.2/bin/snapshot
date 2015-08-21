@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+
+$:.push File.expand_path("../../lib", __FILE__)
+
+require 'snapshot'
+require 'commander'
+require 'snapshot/snapfile_creator'
+require 'snapshot/snapshot_config'
+
+HighLine.track_eof = false
+
+
+class SnapshotApplication
+  include Commander::Methods
+
+  def run
+    program :version, Snapshot::VERSION
+    program :description, 'CLI for \'snapshot\' - Automate taking localized screenshots of your iOS app on every device'
+    program :help, 'Author', 'Felix Krause <snapshot@krausefx.com>'
+    program :help, 'Website', 'https://fastlane.tools'
+    program :help, 'GitHub', 'https://github.com/krausefx/snapshot'
+    program :help_formatter, :compact
+
+    global_option '--snapfile PATH', String, 'Custom path for your Snapfile.'
+    global_option '--nobuild', 'Skips the build process when running snapshot.'
+    global_option '--noclean', 'Skips the clean process of the build command when running snapshot.'
+    global_option('--verbose', 'Shows more output including all output printed by Instruments.') { $verbose = true }
+
+    always_trace!
+
+    command :run do |c|
+      c.syntax = 'snapshot'
+      c.description = 'Take new screenshots based on the Snapfile.'
+
+      c.action do |args, options|
+        path = (Snapshot::Helper.fastlane_enabled?? './fastlane' : '.')
+        Dir.chdir(path) do # switch the context
+          Snapshot::DependencyChecker.check_simulators
+          Snapshot::SnapshotConfig.shared_instance(options.snapfile)
+          Snapshot::Runner.new.work(clean: !options.noclean, build: !options.nobuild)
+        end
+      end
+    end
+
+    command :test do |c|
+      c.syntax = 'snapshot test'
+      c.description = 'Runs the automated tests.'
+
+      c.action do |args, options|
+        path = (Snapshot::Helper.fastlane_enabled?? './fastlane' : '.')
+        Dir.chdir(path) do # switch the context
+          Snapshot::DependencyChecker.check_simulators
+          Snapshot::SnapshotConfig.shared_instance(options.snapfile)
+          Snapshot::Runner.new.work(clean: !options.noclean, build: !options.nobuild, take_snapshots: false)
+        end
+      end
+    end
+
+    command :init do |c|
+      c.syntax = 'snapshot init'
+      c.description = "Creates a new Snapfile in the current directory"
+
+      c.action do |args, options|
+        path = (Snapshot::Helper.fastlane_enabled?? './fastlane' : '.')
+        Snapshot::SnapfileCreator.create(path)
+      end
+    end
+
+    command :reset_simulators do |c|
+      c.syntax = 'snapshot reset_simulators'
+      c.description = "This will remove all your existing simulators and re-create new ones"
+      c.option '-i', '--ios String', String, 'The iOS Version you want to use'
+
+      c.action do |args, options|
+        version = options.ios || Snapshot::LatestIosVersion.version
+        require 'snapshot/reset_simulators'
+
+        Snapshot::ResetSimulators.clear_everything!(version)
+      end
+    end
+
+    default_command :run
+
+    run!
+  end
+end
+
+begin
+  FastlaneCore::UpdateChecker.start_looking_for_update('snapshot')
+  SnapshotApplication.new.run
+ensure
+  FastlaneCore::UpdateChecker.show_update_status('snapshot', Snapshot::VERSION)
+end
