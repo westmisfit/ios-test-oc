@@ -30,7 +30,7 @@
     // This is an example of a functional test case.
     XCTAssert(YES, @"Pass");
     Hello *hello = [[Hello alloc] init];
-    Hello *new_hello = [hello return_hello];
+    Hello *new_hello = [hello create_or_get:@"new"];
 }
 
 - (void)testPerformanceExample {

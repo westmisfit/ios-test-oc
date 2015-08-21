@@ -21,4 +21,6 @@
 
 -(NSString*) parameter_not_null_checked_bug:(Hello*) hello;
 
+-(Hello*) create_or_get:(NSString*) key;
+
 @end

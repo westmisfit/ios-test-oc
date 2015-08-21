@@ -36,11 +36,15 @@ platform :ios do
   end
 
   desc "Build staging app"
-  lane :staging do
+  lane :staging do |options|
     # cocoapods
     clear
     unittest
-    coverage
+    if options[:local]
+      coverage_html
+    else
+      coverage_xml
+    end
   end
 
   desc "Clear output"
@@ -74,23 +78,26 @@ platform :ios do
     # )
   end
 
-  desc "Generate coverage report"
-  lane :coverage do
+  desc "Generate coverage html report"
+  lane :coverage_html do
     # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#gcovr
-    # gcovr(
-    #   html: true,
-    #   html_details: true,
-    #   output: "./out/coverage/report.html",
-    #   root: "."
-    # )
+    gcovr(
+      html: true,
+      html_details: true,
+      output: "./out/coverage/report.html",
+      root: ".",
+      gcov_exclude: ".*#(?:testapp-cTests|Frameworks)#.*"
+    )
+  end
 
+  desc "Generate coverage xml report"
+  lane :coverage_xml do
     # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#gcovr
     gcovr(
       xml: true,
       output: "./out/coverage/report.xml",
       root: ".",
-      keep: true,
-      gcov_exclude: ".*#(?:PrometheusTests|Frameworks)#.*"
+      gcov_exclude: ".*#(?:testapp-cTests|Frameworks)#.*"
     )
   end
 

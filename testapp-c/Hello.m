@@ -30,4 +30,13 @@
     return ret_hello->_s;
 }
 
+-(Hello *) create_or_get:(NSString*) key {
+    if ([key isEqualToString:@"new"]) {
+        return [Hello new];
+    }
+    else {
+        return nil;
+    }
+}
+
 @end
