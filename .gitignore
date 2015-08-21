@@ -4,3 +4,8 @@ infer-out
 *.dSYM.zip
 *.ipa
 report.xml
+
+# bundle files
+.bundle
+bin
+vendor/bundle
