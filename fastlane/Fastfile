@@ -95,6 +95,7 @@ platform :ios do
     # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#gcovr
     gcovr(
       xml: true,
+      keep: true,
       output: "./out/coverage/report.xml",
       root: ".",
       gcov_exclude: ".*#(?:testapp-cTests|Frameworks)#.*"
