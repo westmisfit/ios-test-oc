@@ -50,7 +50,7 @@ main()
 {
 
 # generate + copy
-    # generateGcov
+    generateGcov
     copyGcovToProjectDir
 # post
     coveralls ${@+"$@"}
