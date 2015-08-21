@@ -50,13 +50,13 @@ main()
 {
 
 # generate + copy
-    generateGcov
-    copyGcovToProjectDir
+    # generateGcov
+    # copyGcovToProjectDir
 # post
     coveralls ${@+"$@"}
     echo '==>' ${@+"$@"}
 # clean up
-    removeGcov  
+    # removeGcov  
 }
 
 main ${@+"$@"}
