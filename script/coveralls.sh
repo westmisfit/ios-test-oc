@@ -51,11 +51,11 @@ main()
 
 # generate + copy
     # generateGcov
-    # copyGcovToProjectDir
+    copyGcovToProjectDir
 # post
     coveralls ${@+"$@"}
 # clean up
-    # removeGcov  
+    removeGcov
 }
 
 main ${@+"$@"}
