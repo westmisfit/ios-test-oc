@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 trim()
 {
@@ -54,7 +54,6 @@ main()
     # copyGcovToProjectDir
 # post
     coveralls ${@+"$@"}
-    echo '==>' ${@+"$@"}
 # clean up
     # removeGcov  
 }
