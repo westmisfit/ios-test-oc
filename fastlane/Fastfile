@@ -54,12 +54,8 @@ platform :ios do
     # see https://github.com/facebook/xctool/issues/16
 
     # see https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md#xctool
+    # some other arguments is in .xctool-args file in project root folder
     xctool :test, [
-      "-workspace", "testapp-c.xcworkspace",
-      "-scheme", "ci",
-      # "-configuration", "Debug",
-      "-sdk", "iphonesimulator",
-      # "-arch", "i386",
       "GCC_GENERATE_TEST_COVERAGE_FILES=YES",
       "GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES",
       "-IDECustomDerivedDataLocation='out/build_ccov'"
